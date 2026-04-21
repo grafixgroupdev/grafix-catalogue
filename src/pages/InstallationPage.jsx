@@ -1,6 +1,9 @@
 import TopBar from '../components/TopBar'
 import Hero from '../components/Hero'
 import Breadcrumb from '../components/Breadcrumb'
+import InstallTable from '../components/InstallTable'
+import PageFooter from '../components/PageFooter'
+import { installMethods } from '../data/installMethods'
 
 export default function InstallationPage() {
   return (
@@ -12,31 +15,24 @@ export default function InstallationPage() {
           { label: "Installation" },
         ]} />
         <Hero
-          kicker="Catalogue"
-          title="Installation methods."
-          lede="Detailed guides for specifying and installing all Grafix signage systems." />
+          kicker="Installation methods"
+          title="Eight standard mounts."
+          lede="Reference for sales — every mounting method Grafix uses, side by side. Method details (hardware, spacers, template supply) are confirmed at quote." />
 
         <section>
-          <h2 className="sec">§ 01 — Mounting methods</h2>
-          <p style={{ color: 'var(--ink-2)', marginBottom: '28px' }}>
-            Choose the right installation method for your substrate and design.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="sec">§ 02 — Surface preparation</h2>
-          <p style={{ color: 'var(--ink-2)', marginBottom: '28px' }}>
-            Proper surface prep ensures lasting results and customer satisfaction.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="sec">§ 03 — Tools & materials</h2>
-          <p style={{ color: 'var(--ink-2)', marginBottom: '28px' }}>
-            Standard tools and hardware used across all Grafix installations.
-          </p>
+          <InstallTable rows={installMethods} />
+          <div style={{ display: "flex", gap: 24, marginTop: 28, padding: "20px 24px", border: "1px solid var(--stroke-2)", background: "var(--panel)", borderRadius: 3, alignItems: "center" }}>
+            <div style={{ flex: 1 }}>
+              <div className="mono" style={{ color: "var(--accent)" }}>Note</div>
+              <div style={{ fontSize: 14, color: "var(--ink-2)", marginTop: 4 }}>
+                Method selection is driven by substrate, letter weight, and whether fixings should be visible.
+              </div>
+            </div>
+            <a className="btn">Full installation guide (PDF)</a>
+          </div>
         </section>
       </div>
+      <PageFooter />
     </>
   )
 }

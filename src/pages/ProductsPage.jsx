@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import Grid from '../components/Grid'
 import CategoryCard from '../components/CategoryCard'
 import Breadcrumb from '../components/Breadcrumb'
+import PageFooter from '../components/PageFooter'
 
 export default function ProductsPage() {
   return (
@@ -48,6 +49,7 @@ export default function ProductsPage() {
           </Grid>
         </section>
       </div>
+      <PageFooter />
     </>
   )
 }

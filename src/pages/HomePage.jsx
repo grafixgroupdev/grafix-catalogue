@@ -2,6 +2,7 @@ import TopBar from '../components/TopBar'
 import Hero from '../components/Hero'
 import Grid from '../components/Grid'
 import CategoryCard from '../components/CategoryCard'
+import PageFooter from '../components/PageFooter'
 
 export default function HomePage() {
   return (
@@ -43,6 +44,7 @@ export default function HomePage() {
           </Grid>
         </section>
       </div>
+      <PageFooter />
     </>
   )
 }

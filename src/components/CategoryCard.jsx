@@ -1,4 +1,5 @@
-import Ph from './Ph';
+import { Link } from 'react-router-dom'
+import Ph from './Ph'
 
 export default function CategoryCard({ title, sub, href, h = 220 }) {
   const handleMouseEnter = (e) => {
@@ -10,8 +11,8 @@ export default function CategoryCard({ title, sub, href, h = 220 }) {
   };
 
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       style={{
         textDecoration: "none",
         color: "inherit",
@@ -32,6 +33,6 @@ export default function CategoryCard({ title, sub, href, h = 220 }) {
         </div>
         <span style={{ fontSize: 20, color: "var(--muted)" }}>→</span>
       </div>
-    </a>
+    </Link>
   );
 }

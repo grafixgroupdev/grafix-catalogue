@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function TopBar({ active }) {
   const items = [
     { label: "Products", href: "/products", key: "products" },
@@ -7,15 +9,15 @@ export default function TopBar({ active }) {
   return (
     <div className="topbar">
       <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-        <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="logo">GRAFIX / CATALOGUE</div>
-        </a>
+        </Link>
         <div className="mono">internal tool</div>
       </div>
       <nav>
-        <a href="/" className={active === "home" ? "is-active" : ""}>Home</a>
+        <Link to="/" className={active === "home" ? "is-active" : ""}>Home</Link>
         {items.map(i => (
-          <a key={i.key} href={i.href} className={active === i.key ? "is-active" : ""}>{i.label}</a>
+          <Link key={i.key} to={i.href} className={active === i.key ? "is-active" : ""}>{i.label}</Link>
         ))}
       </nav>
     </div>
