@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grafix · Products</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="page-parts.jsx"></script>
+  <script type="text/babel">
+    function App() {
+      return (
+        <React.Fragment>
+          <TopBar active="products" />
+          <div className="page">
+            <Breadcrumb trail={[
+              { label: "Home", href: "index.html" },
+              { label: "Products" },
+            ]} />
+            <Hero
+              kicker="Catalogue"
+              title="All products."
+              lede="Every family Grafix fabricates, grouped by system. Pick one to see specs and installation." />
+
+            <section>
+              <h2 className="sec">§ 01 — Signage Systems</h2>
+              <Grid cols={3}>
+                <CategoryCard title="Letters & Logos" sub="Flat cut, built-up, channel" href="letters-logos.html" />
+                <CategoryCard title="Flat Sign" sub="Wall-mounted panels" href="flat-sign.html" />
+                <CategoryCard title="Plane Frame Sign" sub="Frame-backed panels" href="plane-frame.html" />
+                <CategoryCard title="Box Signs" sub="Illuminated cabinets" href="box-sign.html" />
+                <CategoryCard title="Post Signs" sub="Panel on posts" href="post-sign.html" />
+                <CategoryCard title="Totem Signs" sub="Vertical monoliths" href="totem.html" />
+              </Grid>
+            </section>
+
+            <section>
+              <h2 className="sec">§ 02 — Graphic Systems</h2>
+              <Grid cols={2}>
+                <CategoryCard title="Vinyl Wrap" sub="Printed vinyl on vehicles, walls, surfaces" href="vinyl-wrap.html" />
+                <CategoryCard title="Rigid Panels" sub="Printed graphics on ACM, acrylic, foam-core" href="rigid-panels.html" />
+                <CategoryCard title="Window Wrap" sub="Frosted, printed, one-way vision" href="window-wrap.html" />
+                <CategoryCard title="Style Guides & Digital Assets" sub="Brand & signage standards" href="style-guides.html" />
+              </Grid>
+            </section>
+
+            <section>
+              <h2 className="sec">§ 03 — Blind Systems</h2>
+              <Grid cols={3}>
+                <CategoryCard title="Printed Roller Blinds" sub="Printed graphics on roller fabric" href="printed-roller.html" />
+                <CategoryCard title="Plain Roller Blinds" sub="Blockout, translucent, screen" href="plain-roller.html" />
+              </Grid>
+            </section>
+          </div>
+          <PageFooter />
+        </React.Fragment>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

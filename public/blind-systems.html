@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grafix · Blind Systems</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="product-data.jsx"></script>
+  <script type="text/babel" src="page-parts.jsx"></script>
+  <script type="text/babel">
+    function ProductTile({ p }) {
+      return (
+        <a href={`${p.slug}.html`} style={{ textDecoration: "none", color: "inherit", border: "1px solid var(--stroke-2)", background: "var(--panel)", borderRadius: 3, display: "block" }}>
+          <Ph label={p.name} h={200} style={{ border: "none" }} />
+          <div style={{ padding: "16px 18px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <div style={{ fontWeight: 600, fontSize: 16 }}>{p.name}</div>
+              <span style={{ fontSize: 18, color: "var(--muted)" }}>→</span>
+            </div>
+            <div style={{ color: "var(--ink-2)", fontSize: 13, marginTop: 6, lineHeight: 1.5 }}>{p.blurb}</div>
+          </div>
+        </a>
+      );
+    }
+
+    function App() {
+      return (
+        <React.Fragment>
+          <TopBar active="products" />
+          <div className="page">
+            <Breadcrumb trail={[
+              { label: "Home", href: "index.html" },
+              { label: "Products", href: "products.html" },
+              { label: "Blind Systems" },
+            ]} />
+            <Hero
+              kicker="Blind Systems"
+              title="Roller blinds — printed and plain."
+              lede="Two product families today, expanding as the range grows. Pick a family to drill into specs, fabric options and mount methods." />
+
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              padding: "6px 12px", border: "1px dashed var(--stroke-2)",
+              background: "var(--panel)", borderRadius: 3, marginBottom: 20,
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+              color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em"
+            }}>
+              <span style={{ width: 8, height: 8, borderRadius: 999, background: "#C99A2E" }}></span>
+              Template in review — layout pending refinement for blind products
+            </div>
+
+            <section>
+              <h2 className="sec">§ 01 — Product families</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }}>
+                {BLIND_PRODUCTS.map(p => <ProductTile key={p.slug} p={p} />)}
+              </div>
+            </section>
+          </div>
+          <PageFooter />
+        </React.Fragment>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grafix · Catalogue — Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="page-parts.jsx"></script>
+  <script type="text/babel">
+    function App() {
+      return (
+        <React.Fragment>
+          <TopBar active="home" />
+          <div className="page">
+            <Hero
+              kicker="Grafix Group · internal catalogue"
+              title="Everything we make, in one place."
+              lede="Knowledge base for sales. Browse products, compare specs, and pull installation methods straight into a quote configurator." />
+
+            <section>
+              <h2 className="sec" style={{ marginTop: 8 }}>§ 01 — Browse by category</h2>
+              <Grid cols={3}>
+                <CategoryCard title="Signage Systems" sub="Letters, logos, panels, boxes, totems" href="signage.html" h={240} />
+                <CategoryCard title="Graphic Systems" sub="Vinyl, panels, window wraps, standards" href="graphic-systems.html" h={240} />
+                <CategoryCard title="Blind Systems" sub="Roller, roman, venetian, shades" href="blind-systems.html" h={240} />
+              </Grid>
+            </section>
+
+            <section>
+              <h2 className="sec">§ 02 — Featured products</h2>
+              <Grid cols={3}>
+                <CategoryCard title="Channel" sub="Signage · Letters & Logos" href="channel.html" />
+                <CategoryCard title="Flat Cut" sub="Signage · Letters & Logos" href="flat-cut.html" />
+                <CategoryCard title="Built-Up" sub="Signage · Letters & Logos" href="built-up.html" />
+                <CategoryCard title="Flat Sign" sub="Signage" href="flat-sign.html" />
+                <CategoryCard title="Box Signs" sub="Signage" href="box-sign.html" />
+                <CategoryCard title="Totem Signs" sub="Signage" href="totem.html" />
+              </Grid>
+            </section>
+
+            <section>
+              <h2 className="sec">§ 03 — Resources</h2>
+              <Grid cols={2}>
+                <CategoryCard title="Installation methods" sub="Eight standard mounts" href="installation.html" h={180} />
+                <CategoryCard title="All products" sub="Full catalogue index" href="products.html" h={180} />
+              </Grid>
+            </section>
+          </div>
+          <PageFooter />
+        </React.Fragment>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

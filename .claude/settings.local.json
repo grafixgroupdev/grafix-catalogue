@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -q \"Grafix Group - Product Catalogue - v01.zip\")"
+    ]
+  }
+}

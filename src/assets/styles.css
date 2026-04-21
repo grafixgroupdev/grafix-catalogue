@@ -1,0 +1,126 @@
+/* Wireframe base — clean professional, not sketchy */
+:root{
+  --bg:#F6F5F2;
+  --panel:#FFFFFF;
+  --ink:#1A1A1A;
+  --ink-2:#4A4A48;
+  --muted:#8A8880;
+  --stroke:#C8C6C0;
+  --stroke-2:#E3E1DC;
+  --accent: oklch(0.58 0.13 50);
+  --accent-soft: oklch(0.94 0.04 60);
+  --grid: #EDEBE4;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}
+.mono-2{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--ink-2)}
+
+/* --- Page shell --- */
+.page{max-width:1360px;margin:0 auto;padding:0 48px 120px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 48px;border-bottom:1px solid var(--stroke);background:var(--bg);position:sticky;top:0;z-index:10}
+.topbar .logo{font-weight:700;letter-spacing:.04em;font-size:16px}
+.topbar nav{display:flex;gap:28px}
+.topbar nav a{color:var(--ink-2);text-decoration:none;font-size:13px;cursor:pointer}
+.topbar nav a:hover{color:var(--ink)}
+.topbar nav a.is-active{color:var(--ink);font-weight:600;border-bottom:2px solid var(--ink);padding-bottom:2px}
+.topbar .cta{border:1px solid var(--ink);padding:8px 14px;font-size:12px;border-radius:2px}
+
+.breadcrumb{display:flex;gap:10px;align-items:center;padding:28px 0 10px;color:var(--muted);font-size:12px}
+.breadcrumb a{color:var(--muted);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{color:var(--ink);text-decoration:underline}
+.breadcrumb .sep{opacity:.5}
+.breadcrumb .cur{color:var(--ink)}
+
+/* --- Annotations --- */
+.annot{position:absolute;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;background:var(--bg);padding:2px 6px;border:1px solid var(--accent);border-radius:2px}
+
+/* --- Image placeholders (striped) --- */
+.ph{
+  position:relative;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 10px, rgba(0,0,0,0.035) 10px 11px),
+    var(--panel);
+  border:1px solid var(--stroke);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);
+  font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+  text-align:center;padding:12px;
+}
+.ph .x{position:absolute;inset:0;pointer-events:none}
+.ph .x::before,.ph .x::after{content:"";position:absolute;background:var(--stroke);opacity:.55}
+.ph .x::before{inset:0 0 0 0;height:1px;top:50%;transform:translateY(-50%);width:100%}
+.ph.corner::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(to top right, transparent calc(50% - .5px), var(--stroke) 50%, transparent calc(50% + .5px))
+}
+
+/* --- Sections --- */
+section{padding:48px 0;border-bottom:1px dashed var(--stroke-2)}
+section:last-of-type{border-bottom:none}
+h1.title{font-size:56px;font-weight:600;letter-spacing:-0.02em;margin:0 0 8px;line-height:1.02}
+h2.sec{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;font-weight:500}
+h3.sub{font-size:26px;font-weight:500;letter-spacing:-0.01em;margin:0 0 10px}
+.lede{font-size:16px;color:var(--ink-2);max-width:62ch}
+.kicker{font-size:11px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:12px}
+
+/* --- Tweaks panel --- */
+.tweaks{
+  position:fixed;top:88px;right:24px;z-index:50;
+  background:var(--panel);border:1px solid var(--stroke);border-radius:3px;
+  padding:14px 14px 12px;width:240px;box-shadow:0 6px 24px rgba(0,0,0,.06);
+  font-family:'JetBrains Mono',monospace;
+}
+.tweaks .t-title{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.tweaks .var-btn{
+  display:flex;justify-content:space-between;align-items:center;
+  width:100%;padding:8px 10px;margin-bottom:4px;
+  border:1px solid var(--stroke-2);background:transparent;border-radius:2px;
+  font-family:inherit;font-size:12px;cursor:pointer;text-align:left;color:var(--ink);
+}
+.tweaks .var-btn:hover{border-color:var(--ink-2)}
+.tweaks .var-btn.active{border-color:var(--ink);background:var(--ink);color:var(--panel)}
+.tweaks .var-btn .tag{font-size:10px;opacity:.6}
+.tweaks .hint{font-size:10px;color:var(--muted);margin-top:8px;line-height:1.4;text-transform:none;letter-spacing:0}
+
+/* --- Variation wrapper --- */
+.variation{display:none}
+.variation.active{display:block}
+
+/* Generic */
+.row{display:flex;gap:24px}
+.col{flex:1;min-width:0}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);padding:10px 16px;font-size:13px;border-radius:2px;background:transparent;color:var(--ink);text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.tag-pill{display:inline-block;padding:3px 8px;border:1px solid var(--stroke);border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Tables */
+table.specs{width:100%;border-collapse:collapse;font-size:14px}
+table.specs th,table.specs td{padding:12px 14px;border-bottom:1px solid var(--stroke-2);text-align:left;vertical-align:top}
+table.specs th{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;width:34%}
+
+/* Config status pill — product is active in configurator */
+.config-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 12px 6px 10px;
+  border:1px solid oklch(0.72 0.16 150);
+  background: oklch(0.96 0.05 150);
+  color: oklch(0.38 0.12 150);
+  border-radius:999px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;
+  white-space:nowrap;
+}
+.config-pill__dot{
+  width:8px;height:8px;border-radius:50%;
+  background: oklch(0.62 0.19 150);
+  box-shadow: 0 0 0 4px oklch(0.62 0.19 150 / 0.18);
+  animation: config-pulse 2s ease-in-out infinite;
+}
+@keyframes config-pulse{
+  0%,100%{ box-shadow: 0 0 0 4px oklch(0.62 0.19 150 / 0.18); }
+  50%{ box-shadow: 0 0 0 7px oklch(0.62 0.19 150 / 0.05); }
+}
+
+/* Footer */
+footer{padding:40px 48px;border-top:1px solid var(--stroke);color:var(--muted);font-size:12px;display:flex;justify-content:space-between}
